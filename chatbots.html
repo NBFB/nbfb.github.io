@@ -1,21 +1,33 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Test Layout</title>
-        <style type="text/css">
-            body, html
-            {
-                margin: 0; padding: 0; height: 100%; overflow: hidden;
-            }
-            #content
-            {
-                position:absolute; left: 0; right: 0; bottom: 0; top: 0px; 
-            }
-        </style>
-    </head>
-    <body>
-        <div id="content">
-            <iframe width="100%" height="100%" frameborder="0" src="https://rise.articulate.com/share/FTCLGBtQU-ODCuomeFrp7G8u4YpxktcB#/?_k=dvzm79" />
-        </div>
-    </body>
+<html>
+  <head>
+  </head>
+  <body>
+
+
+  <iframe src="https://rise.articulate.com/share/FTCLGBtQU-ODCuomeFrp7G8u4YpxktcB#/?_k=xgzfqb" allowfullscreen></iframe>
+
+
+  <script>
+    // Find all iframes
+    var $iframes = $( "iframe" );
+    // Find &#x26; save the aspect ratio for all iframes
+    $iframes.each(function () {
+      $( this ).data( "ratio", this.height / this.width )
+        // Remove the hardcoded width &#x26; height attributes
+        .removeAttr( "width" )
+        .removeAttr( "height" );
+    });
+    // Resize the iframes when the window is resized
+    $( window ).resize( function () {
+      $iframes.each( function() {
+        // Get the parent container&#x27;s width
+        var width = $( this ).parent().width();
+        $( this ).width( width )
+          .height( width * $( this ).data( "ratio" ) );
+      });
+    // Resize to fix all iframes on page load.
+    }).resize();
+    </script>
+    
+  </body>
 </html>
